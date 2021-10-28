@@ -6,6 +6,7 @@ import { store } from "../app/store";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { Hydrate } from "react-query/hydration";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const {} = useUserChanged();
@@ -23,9 +24,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
+      <Hydrate state={pageProps.dehydratedState}>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </Hydrate>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );

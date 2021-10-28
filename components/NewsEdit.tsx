@@ -15,6 +15,9 @@ const NewsEdit = () => {
       updateNewsMutation.mutate(editedNews);
     }
   };
+  if (createNewsMutation.error || updateNewsMutation.error) {
+    return <div>{"Error"}</div>;
+  }
   return (
     <>
       <form onSubmit={submitHandler}>

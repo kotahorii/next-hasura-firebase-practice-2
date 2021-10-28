@@ -41,6 +41,9 @@ export const useAppMutate = () => {
         }
         dispatch(resetEditTask());
       },
+      onError: () => {
+        dispatch(resetEditTask());
+      },
     }
   );
   const updateTaskMutation = useMutation(
@@ -56,6 +59,9 @@ export const useAppMutate = () => {
             )
           );
         }
+        dispatch(resetEditTask());
+      },
+      onError: () => {
         dispatch(resetEditTask());
       },
     }
