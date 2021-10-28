@@ -3,7 +3,7 @@ import * as admin from "firebase-admin";
 
 admin.initializeApp();
 
-export const setCustomClaims = functions.auth.user().onCreate(async (user)=>{
+export const setCustomClaims = functions.auth.user().onCreate(async (user) => {
   const customClaims = {
     "https://hasura.io/jwt/claims": {
       "x-hasura-default-role": "staff",
